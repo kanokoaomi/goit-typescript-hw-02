@@ -1,4 +1,4 @@
-import ImageModule from "../ImageModule/ImageModule"
+import ImageCard from "../ImageCard/ImageCard"
 import styles from './ImageGallery.module.css'
 import Masonry from "react-responsive-masonry"
 
@@ -8,7 +8,7 @@ const ImageGallery = ({ images }) => {
             {images.map((image) => {
                 return (
                     <div className={styles.masonryItem} key={image.id}>
-                        <ImageModule image={image} />
+                        <ImageCard image={image} />
                     </div>
                 )
             })}

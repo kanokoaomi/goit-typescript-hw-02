@@ -1,4 +1,4 @@
-const ImageModule = ({ image }) => {
+const ImageCard = ({ image }) => {
     return (
         <div>
             <img src={image.urls.small} alt={image.description} />
@@ -9,4 +9,4 @@ const ImageModule = ({ image }) => {
     )
 }
 
-export default ImageModule
+export default ImageCard
