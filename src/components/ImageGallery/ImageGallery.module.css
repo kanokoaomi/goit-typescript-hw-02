@@ -29,15 +29,12 @@
 } */
 
 .masonryContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 25px;
     padding: 132px;
     padding-top: 125px;
     padding-bottom: 32px;
 }
 
 .masonryItem {
-    width: 100%;
+    width: auto;
     height: auto;
 }
