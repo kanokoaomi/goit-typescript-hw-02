@@ -1,12 +1,36 @@
-// const ImageModule = ({ image }) => {
-//     return (
-//         <div>
-//             <img src={image.urls.small} alt={image.description} />
-//             {/* <p>Username: {image.user.username}</p>
-//             <p>{image.likes}❤️</p> */}
-//             {/* <p>{image.description}</p> */}
-//         </div>
-//     )
-// }
+import Modal from 'react-modal'
+import styles from './ImageModal.module.css'
 
-// export default ImageModule
+const ImageModal = ({ isOpen, closeModal, modalData }) => {
+    const customStyles = {
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+            background: 'rgba(144, 158, 189, 0.5)',
+            border: 'none',
+            padding: '0',
+            maxWidth: '70%',
+            maxHeight: '70%',
+        }
+    }
+
+    return (
+        <>
+            <Modal
+                style={customStyles}
+                isOpen={isOpen}
+                onRequestClose={closeModal}
+                contentLabel="Image modal"
+                overlayClassName={styles.modalOverlay}
+            >
+                <img src={modalData.urls.regular} alt={modalData.description} />
+            </Modal>
+        </>
+    )
+}
+
+export default ImageModal
