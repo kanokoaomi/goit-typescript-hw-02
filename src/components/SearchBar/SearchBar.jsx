@@ -1,4 +1,4 @@
-import toast from 'react-hot-toast';
+import toast from 'react-hot-toast'
 import styles from './SearchBar.module.css'
 
 const SearchBar = ({ onSearch }) => {

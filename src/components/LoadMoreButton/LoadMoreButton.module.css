@@ -1,13 +1,5 @@
 .button {
-    display: inline-block;
-    margin-left: 25px;
     margin-bottom: 100px;
-    padding: 10px;
-    font-size: 1em;
-    border: 2px solid #34598B;
-    background-color: white;
-    border-radius: 5px;
-    color: #34598B;
 }
 
 .button:hover {

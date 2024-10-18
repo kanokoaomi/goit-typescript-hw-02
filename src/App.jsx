@@ -8,6 +8,7 @@ import SearchBar from './components/SearchBar/SearchBar'
 import LoadMoreButton from './components/LoadMoreButton/LoadMoreButton'
 import Modal from 'react-modal'
 import ImageModal from './components/ImageModal/ImageModal'
+import toast from 'react-hot-toast'
 
 Modal.setAppElement('#root')
 
@@ -24,13 +25,11 @@ function App() {
   const openModal = (data) => {
     setIsOpen(true)
     setModalData(data)
-    console.log('it works')
   }
 
-  // const afterOpenModal = () => {
-  //   Modal.setAppElement()
-  // }
-
+  const notify = () => {
+    toast('No images for your search');
+  }
   const closeModal = () => {
     setIsOpen(false)
     setModalData(null)
@@ -58,6 +57,10 @@ function App() {
 
         setTotalPages(data.total_pages)
 
+        if (data.total === 0) {
+          notify()
+        }
+
         setImages((prevImages) => {
           if (page === 1) {
             return images
@@ -76,13 +79,13 @@ function App() {
   }, [searchTerm, page])
 
   useEffect(() => {
-    if (page > 1) {
-      window.scrollBy({
-        top: 800,
-        behavior: 'smooth',
+    if (isLoading === false && page > 1) {
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: "smooth",
       });
     }
-  }, [page]);
+  }, [isLoading, page]);
 
   return (
     <div>
@@ -103,7 +106,7 @@ function App() {
         />
       )}
       {error && "Oops, an unexpected error accured. Try again!"}
-      {page < totalPages && <LoadMoreButton onLoadMoreBtn={onLoadMoreBtn} />}
+      {page < totalPages && isLoading === false && <LoadMoreButton onLoadMoreBtn={onLoadMoreBtn} />}
     </div>
   )
 }

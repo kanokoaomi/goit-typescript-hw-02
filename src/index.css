@@ -1,5 +1,5 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Raleway', sans-serif;
   line-height: 1.5;
   background-color: #E6F1FF;
   position: relative;
@@ -25,4 +25,19 @@ ol {
 img {
   display: block;
   max-width: 100%;
+}
+
+
+button {
+  display: inline-block;
+  margin-left: 25px;
+  padding: 10px 15px;
+  font-size: 1em;
+  border: 2px solid #34598B;
+  background-color: white;
+  border-radius: 5px;
+  color: #34598B;
+
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
 }

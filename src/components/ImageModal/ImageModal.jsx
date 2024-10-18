@@ -4,18 +4,20 @@ import styles from './ImageModal.module.css'
 const ImageModal = ({ isOpen, closeModal, modalData }) => {
     const customStyles = {
         content: {
-            top: '50%',
-            left: '50%',
-            right: 'auto',
-            bottom: 'auto',
-            marginRight: '-50%',
-            transform: 'translate(-50%, -50%)',
-            background: 'rgba(144, 158, 189, 0.5)',
-            border: 'none',
-            padding: '0',
-            maxWidth: '70%',
-            maxHeight: '70%',
-        }
+            display: "flex",
+            position: "relative",
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: "0",
+            padding: 0,
+            width: "500px",
+            height: "fit-content",
+            opacity: 1,
+            backgroundColor: "black",
+            color: "white",
+            inset: 0,
+        },
+
     }
 
     return (
