@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import fetchRequestForPictures from './fetchRequest'
-import './App.css'
 import ImageGallery from './components/ImageGallery/ImageGallery'
 import Loader from './components/Loader/Loader'
 import { Toaster } from 'react-hot-toast';
 import SearchBar from './components/SearchBar/SearchBar'
-import LoadMoreButton from './components/LoadMoreButton/LoadMoreButton'
-import Modal from 'react-modal'
+import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn'
 import ImageModal from './components/ImageModal/ImageModal'
 import toast from 'react-hot-toast'
-
-Modal.setAppElement('#root')
+import './App.css'
+import classNames from 'classnames'
+import ErrorMessage from './components/ErrorMessage/ErrorMessage';
+import { ThemeContext } from './components/Context/ThemeContextProvider';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("")
@@ -22,6 +22,22 @@ function App() {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalData, setModalData] = useState(null);
 
+  const { theme } = useContext(ThemeContext);
+
+
+  // заборона прокрутки при відкритій модалці
+  useEffect(() => {
+    if (modalIsOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset'
+    };
+  }, [modalIsOpen])
+
   const openModal = (data) => {
     setIsOpen(true)
     setModalData(data)
@@ -30,6 +46,7 @@ function App() {
   const notify = () => {
     toast('No images for your search');
   }
+
   const closeModal = () => {
     setIsOpen(false)
     setModalData(null)
@@ -46,15 +63,16 @@ function App() {
     setPage((prevPage) => prevPage + 1)
   }
 
+
+  // обробка запиту
   useEffect(() => {
     async function fetchImages() {
       try {
         if (searchTerm === "") return
         setIsLoading(true)
-
+        setError(null)
         const data = await fetchRequestForPictures(searchTerm, page)
         const images = data.results
-
         setTotalPages(data.total_pages)
 
         if (data.total === 0) {
@@ -67,17 +85,19 @@ function App() {
           }
           return [...prevImages, ...images]
         })
+
       } catch (error) {
         setError(error.message)
 
       } finally {
         setIsLoading(false)
-        setError(false)
       }
     }
     fetchImages()
   }, [searchTerm, page])
 
+
+  // плавний скрол
   useEffect(() => {
     if (isLoading === false && page > 1) {
       window.scrollTo({
@@ -87,26 +107,29 @@ function App() {
     }
   }, [isLoading, page]);
 
+
   return (
-    <div>
-      {isLoading && <Loader />}
-      <Toaster />
-      <SearchBar onSearch={handleSubmit} />
-      {images !== null &&
-        <ImageGallery
-          images={images}
-          openModal={openModal}
-        />}
-      {modalData && (
-        <ImageModal
-          openModal={openModal}
-          modalData={modalData}
-          closeModal={closeModal}
-          isOpen={modalIsOpen}
-        />
-      )}
-      {error && "Oops, an unexpected error accured. Try again!"}
-      {page < totalPages && isLoading === false && <LoadMoreButton onLoadMoreBtn={onLoadMoreBtn} />}
+    <div className={classNames('container', theme)}>
+      <div className={classNames("body", theme)}>
+        {isLoading && <Loader />}
+        <Toaster />
+        <SearchBar onSearch={handleSubmit} />
+        {images !== null &&
+          <ImageGallery
+            images={images}
+            openModal={openModal}
+          />}
+        {modalData && (
+          <ImageModal
+            openModal={openModal}
+            modalData={modalData}
+            closeModal={closeModal}
+            isOpen={modalIsOpen}
+          />
+        )}
+        {error && <ErrorMessage />}
+        {page < totalPages && isLoading === false && <LoadMoreBtn onLoadMoreBtn={onLoadMoreBtn} />}
+      </div>
     </div>
   )
 }

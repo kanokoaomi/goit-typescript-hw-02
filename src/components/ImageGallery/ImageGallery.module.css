@@ -1,40 +1,15 @@
-/* .listOfImages {
-    display: flex;
-    gap: 25px;
-    flex-wrap: wrap;
-    list-style-type: none;
-} */
-
-/* .list {
-    min-width: 100%;
-} */
-
-/* .item {
-    width: calc((100% - 75px) / 3);
-} */
-
-/* .listOfImages {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    gap: 25px;
-    width: 100%;
-    justify-items: center;
-}
 
 .item {
-    width: 100%;
-    height: min-content;
-    object-fit: cover;
-    display: block;
-} */
+    list-style-type: none;
+}
 
-.masonryContainer {
+.container {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    gap: 25px;
     padding: 132px;
     padding-top: 125px;
     padding-bottom: 32px;
-}
-
-.masonryItem {
-    width: auto;
-    height: auto;
 }

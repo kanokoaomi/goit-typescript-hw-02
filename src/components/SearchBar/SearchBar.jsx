@@ -1,7 +1,15 @@
 import toast from 'react-hot-toast'
 import styles from './SearchBar.module.css'
+import "../../App.css"
+import ThemeChoise from '../ThemeChoise/ThemeChoise'
+import { useContext } from 'react'
+import { ThemeContext } from '../Context/ThemeContextProvider'
+import classNames from 'classnames'
 
 const SearchBar = ({ onSearch }) => {
+
+    const { theme } = useContext(ThemeContext)
+
     const notify = () => {
         toast('Type a search word');
     }
@@ -21,17 +29,18 @@ const SearchBar = ({ onSearch }) => {
     }
 
     return (
-        <header className={styles.header}>
-            <form onSubmit={onFormSubmit}>
+        <header className={classNames("header", theme)}>
+            <form className={styles.form} onSubmit={onFormSubmit}>
                 <input
                     name='query'
                     type="text"
                     autoComplete="off"
                     autoFocus
                     placeholder="Search images and photos"
-                    className={styles.input}
+                    className={classNames("input", theme)}
                 />
-                <button className={styles.button} type="submit">Search</button>
+                <button className={classNames("button", theme)} type="submit">Search</button>
+                <ThemeChoise value={theme} />
             </form>
         </header>
     )

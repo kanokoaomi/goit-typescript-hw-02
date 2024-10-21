@@ -1,20 +1,22 @@
 import ImageCard from "../ImageCard/ImageCard"
 import styles from './ImageGallery.module.css'
-import Masonry from "react-responsive-masonry"
+// import Masonry from "react-responsive-masonry"
 
 const ImageGallery = ({ images, openModal }) => {
     return (
-        <Masonry className={styles.masonryContainer} columnsCount={3} gutter="25px">
+        <ul className={styles.container}>
             {images.map((image) => {
                 return (
-                    <div className={styles.masonryItem} key={image.id}>
-                        <ImageCard
-                            image={image}
-                            openModal={openModal} />
-                    </div>
+                    <li className={styles.item} key={image.id}>
+                        <div className={styles.masonryItem}>
+                            <ImageCard
+                                image={image}
+                                openModal={openModal} />
+                        </div>
+                    </li>
                 )
             })}
-        </Masonry>
+        </ul>
     )
 }
 

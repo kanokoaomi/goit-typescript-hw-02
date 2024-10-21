@@ -2,23 +2,8 @@ import Modal from 'react-modal'
 // import styles from './ImageModal.module.css'
 
 const ImageModal = ({ isOpen, closeModal, modalData }) => {
-    // const customStyles = {
-    //     content: {
-    //         display: "flex",
-    //         position: "relative",
-    //         justifyContent: "center",
-    //         alignItems: "center",
-    //         borderRadius: "0",
-    //         padding: 0,
-    //         width: "500px",
-    //         height: "fit-content",
-    //         opacity: 1,
-    //         backgroundColor: "rgba(144, 158, 189, 0.5)",
-    //         color: "white",
-    //         inset: 0,
-    //     },
 
-    // }
+    Modal.setAppElement('#root')
 
     return (
         <>

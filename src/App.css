@@ -1,41 +1,116 @@
-#root {
-  margin: 0 auto;
-  padding: 0;
-  text-align: center;
+.container {
+    display: grid;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* BLUE */
+
+.body.blue {
+    background-color: #E6F1FF;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+header.blue {
+    background-color: #909EBD;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+button.blue {
+    border: 2px solid #34598B;
+    background-color: white;
+    color: #34598B;
 }
 
-.card {
-  padding: 2em;
+button.blue:hover {
+    background-color: #E6F1FF;
 }
 
-.read-the-docs {
-  color: #888;
+.input.blue {
+    border: 2px solid #34598B;
+    outline-color: #34598B;
+    background-color: white;
+}
+
+.select.blue {
+    border: 2px solid #34598B;
+    background-color: white;
+    color: #34598B;
+    outline-color: #34598B;
+}
+
+.loader.blue {
+    color: #34598B;
+}
+
+/* DARK */
+
+.body.dark {
+    background-color: #242424;
+}
+
+header.dark {
+    background-color: #343434;
+}
+
+button.dark {
+    border: 2px solid #242424;
+    background-color: #525252;
+    color: #F0F0F0;
+}
+
+button.dark:hover {
+    background-color: #242424;
+}
+
+.input.dark {
+    border: 2px solid #242424;
+    outline-color: #242424;
+    background-color: #525252;
+    color: #ffffff;
+}
+
+.input.dark:placeholder-shown {
+    color: #ffffff;
+}
+
+.select.dark {
+    border: 2px solid #242424;
+    background-color: #525252;
+    color: white;
+    outline-color: #242424;
+}
+
+.buttonLoadMore.dark {
+    background-color: #343434;
+    border: 2px solid #525252;
+}
+
+.buttonLoadMore.dark:hover {
+    background-color: #525252;
+}
+
+.loader.dark {
+    color: #F0F0F0;
+}
+
+
+/* LIGHT */
+
+.body.light {
+    background-color: #FFFFFF;
+}
+
+header.light {
+    background-color: #F0F0F0;
+}
+
+button.light {
+    border: 2px solid #525252;
+    background-color: white;
+    color: #242424;
+}
+
+button.light:hover {
+    background-color: #F0F0F0;
+}
+
+.loader.light {
+    color: #242424;
 }
