@@ -1,9 +1,12 @@
 import Modal from 'react-modal'
 // import styles from './ImageModal.module.css'
+import { useContext } from "react"
+import { ThemeContext } from "../Context/ThemeContextProvider"
 
 const ImageModal = ({ isOpen, closeModal, modalData }) => {
 
     Modal.setAppElement('#root')
+    const { theme } = useContext(ThemeContext)
 
     return (
         <>
@@ -14,7 +17,11 @@ const ImageModal = ({ isOpen, closeModal, modalData }) => {
                         justifyContent: "center",
                         alignItems: "center",
                         zIndex: "999999",
-                        backgroundColor: "rgba(144, 158, 189, 0.5)",
+                        backgroundColor: theme === "dark"
+                            ? "rgba(36, 36, 36, 0.8)"
+                            : theme === "light"
+                                ? "rgba(255, 255, 255, 0.8)"
+                                : "rgba(144, 158, 189, 0.8)",
                         backdropFilter: "blur(5px)",
                     },
                     content: {

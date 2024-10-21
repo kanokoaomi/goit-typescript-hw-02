@@ -4,12 +4,8 @@
 
 /* BLUE */
 
-.body.blue {
-    background-color: #E6F1FF;
-}
-
 header.blue {
-    background-color: #909EBD;
+    background-color: #909ebd;
 }
 
 button.blue {
@@ -19,12 +15,12 @@ button.blue {
 }
 
 button.blue:hover {
-    background-color: #E6F1FF;
+    background-color: #e6f1ff;
 }
 
 .input.blue {
     border: 2px solid #34598B;
-    outline-color: #34598B;
+    outline-color: #34598b;
     background-color: white;
 }
 
@@ -40,10 +36,6 @@ button.blue:hover {
 }
 
 /* DARK */
-
-.body.dark {
-    background-color: #242424;
-}
 
 header.dark {
     background-color: #343434;
@@ -93,12 +85,8 @@ button.dark:hover {
 
 /* LIGHT */
 
-.body.light {
-    background-color: #FFFFFF;
-}
-
 header.light {
-    background-color: #F0F0F0;
+    background-color: #e4e4e4;
 }
 
 button.light {
@@ -108,7 +96,7 @@ button.light {
 }
 
 button.light:hover {
-    background-color: #F0F0F0;
+    background-color: #e4e4e4;
 }
 
 .loader.light {
