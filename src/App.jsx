@@ -22,8 +22,24 @@ function App() {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalData, setModalData] = useState(null);
 
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext)
 
+  useEffect(() => {
+    switch (theme) {
+      case "blue": {
+        document.body.style.backgroundColor = "#e6f1ff"
+        break
+      }
+      case "dark": {
+        document.body.style.backgroundColor = "#242424"
+        break
+      }
+      case "light": {
+        document.body.style.backgroundColor = "#ffffff"
+        break
+      }
+    }
+  }, [theme])
 
   // заборона прокрутки при відкритій модалці
   useEffect(() => {
@@ -63,7 +79,6 @@ function App() {
     setPage((prevPage) => prevPage + 1)
   }
 
-
   // обробка запиту
   useEffect(() => {
     async function fetchImages() {
@@ -96,7 +111,6 @@ function App() {
     fetchImages()
   }, [searchTerm, page])
 
-
   // плавний скрол
   useEffect(() => {
     if (isLoading === false && page > 1) {
@@ -106,7 +120,6 @@ function App() {
       });
     }
   }, [isLoading, page]);
-
 
   return (
     <div className={classNames('container', theme)}>
