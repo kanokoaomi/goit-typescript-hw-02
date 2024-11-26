@@ -1,7 +1,7 @@
 import ImageCard from "../ImageCard/ImageCard";
 import styles from './ImageGallery.module.css';
 
-interface Image {
+export interface Image {
   id: string;
   imageSrc: string;
   imageAlt: string;
@@ -16,7 +16,7 @@ interface Image {
   };
 }
 
-interface ModalData {
+export interface ModalData {
   id: string;
   imageSrc: string;
   imageAlt: string;
@@ -49,6 +49,9 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images, openModal }) => {
                   id: String(image.id), 
                   imageSrc: image.urls.regular,
                   imageAlt: image.description, 
+                  description: image.description,
+                  imageUrl: image.urls.regular,
+                  urls: image.urls
                 })}
               />
             </div>

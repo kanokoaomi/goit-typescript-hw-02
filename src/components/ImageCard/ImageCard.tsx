@@ -1,6 +1,12 @@
+import { Image, ModalData } from "../ImageGallery/ImageGallery";
 import styles from "./ImageCard.module.css"
 
-const ImageCard = ({ image, openModal }) => {
+interface ImageGalleryProps {
+  images: Image[];
+  openModal: (data: ModalData) => void;
+}
+
+const ImageCard: React.FC<ImageGalleryProps> = ({ image, openModal }) => {
     return (
         <div className={styles.imgContainer}>
             <img className={styles.img} onClick={() => openModal(image)} src={image.urls.small} alt={image.description} />

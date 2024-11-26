@@ -14,7 +14,6 @@ interface ModalData {
 }
 
 interface ImageModalProps {
-  openModal: (data: ModalData) => void;
   modalData: ModalData;
   closeModal: () => void;
   isOpen: boolean;

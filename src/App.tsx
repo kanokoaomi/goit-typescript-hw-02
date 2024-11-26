@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import fetchRequestForPictures from './fetchRequest'
-import ImageGallery from './components/ImageGallery/ImageGallery'
+import ImageGallery, { Image } from './components/ImageGallery/ImageGallery'
 import Loader from './components/Loader/Loader'
 import { Toaster } from 'react-hot-toast'
 import SearchBar from './components/SearchBar/SearchBar'
@@ -10,6 +10,7 @@ import toast from 'react-hot-toast'
 import './App.css'
 import classNames from 'classnames'
 import ErrorMessage from './components/ErrorMessage/ErrorMessage'
+// import Image from "./components/ImageGallery/ImageGallery"
 // import { ThemeContext } from './components/Context/ThemeContextProvider'
 
 interface ModalData {
@@ -36,7 +37,7 @@ function App() {
   const [page, setPage] = useState<number>(1)
   const [error, setError] = useState<ErrorData | null>(null)
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [images, setImages] = useState<ImageData[] | null>(null)
+  const [images, setImages] = useState<Image[] | null>(null)
   const [totalPages, setTotalPages] = useState<number>(0)
   const [modalIsOpen, setIsOpen] = useState<boolean>(false)
   const [modalData, setModalData] = useState<ModalData | null>(null)
