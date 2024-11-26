@@ -1,12 +1,36 @@
 import Modal from 'react-modal'
-// import styles from './ImageModal.module.css'
-import { useContext } from "react"
-import { ThemeContext } from "../Context/ThemeContextProvider"
+// import { useContext } from "react"
+// import { ThemeContext } from "../Context/ThemeContextProvider"
 
-const ImageModal = ({ isOpen, closeModal, modalData }) => {
+import React from 'react';
 
-    Modal.setAppElement('#root')
-    const { theme } = useContext(ThemeContext)
+interface ModalData {
+  id: string;
+  description: string;
+  imageUrl: string;
+  urls: {
+    regular: string;
+  };
+}
+
+interface ImageModalProps {
+  openModal: (data: ModalData) => void;
+  modalData: ModalData;
+  closeModal: () => void;
+  isOpen: boolean;
+}
+
+const ImageModal: React.FC<ImageModalProps> = ({ modalData, closeModal, isOpen }) => {
+
+  if (!isOpen) return null;
+
+    // const { theme } = useContext(ThemeContext)
+
+    // backgroundColor: theme === "dark"
+    //                         ? "rgba(36, 36, 36, 0.8)"
+    //                         : theme === "light"
+    //                             ? "rgba(255, 255, 255, 0.8)"
+    //                             : "rgba(144, 158, 189, 0.8)",
 
     return (
         <>
@@ -17,11 +41,7 @@ const ImageModal = ({ isOpen, closeModal, modalData }) => {
                         justifyContent: "center",
                         alignItems: "center",
                         zIndex: "999999",
-                        backgroundColor: theme === "dark"
-                            ? "rgba(36, 36, 36, 0.8)"
-                            : theme === "light"
-                                ? "rgba(255, 255, 255, 0.8)"
-                                : "rgba(144, 158, 189, 0.8)",
+                        backgroundColor: "rgba(144, 158, 189, 0.8)",
                         backdropFilter: "blur(5px)",
                     },
                     content: {
