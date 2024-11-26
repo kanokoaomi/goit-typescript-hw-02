@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import fetchRequestForPictures from './fetchRequest'
-import ImageGallery, { Image } from './components/ImageGallery/ImageGallery'
+import ImageGallery, { Image, ModalData } from './components/ImageGallery/ImageGallery'
 import Loader from './components/Loader/Loader'
 import { Toaster } from 'react-hot-toast'
 import SearchBar from './components/SearchBar/SearchBar'
@@ -13,20 +13,20 @@ import ErrorMessage from './components/ErrorMessage/ErrorMessage'
 // import Image from "./components/ImageGallery/ImageGallery"
 // import { ThemeContext } from './components/Context/ThemeContextProvider'
 
-interface ModalData {
-  id: string;
-  imageSrc: string;
-  imageAlt: string;
-  description: string; 
-  imageUrl: string; 
-  urls: {
-    raw: string;
-    full: string;
-    regular: string;
-    small: string;
-    thumb: string;
-  };
-}
+// interface ModalData {
+//   id: string;
+//   imageSrc: string;
+//   imageAlt: string;
+//   description: string; 
+//   imageUrl: string; 
+//   urls: {
+//     raw: string;
+//     full: string;
+//     regular: string;
+//     small: string;
+//     thumb: string;
+//   };
+// }
 
 interface ErrorData {
   message: string;
@@ -118,11 +118,25 @@ function App() {
         }
 
         setImages((prevImages) => {
-          if (page === 1) {
-            return images || []
-          }
-          return [...(prevImages || []), ...(images || [])]
-        });
+  if (page === 1) {
+    return images.map(image => ({
+      id: image.id,
+      description: image.description,
+      imageSrc: image.urls.regular,
+      imageAlt: image.description || 'Image description', // Якщо немає опису, ставимо дефолтне значення
+      urls: image.urls,
+      imageUrl: image.urls.regular,
+      
+    }));
+  }
+  return [...(prevImages || []), ...images.map(image => ({
+    id: image.id,
+    description: image.description,
+    imageSrc: image.urls.regular,
+    imageAlt: image.description || 'Image description',
+    urls: image.urls,
+  }))];
+});
       } catch (error: any) {
         setError({ message: error.message })
       } finally {

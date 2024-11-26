@@ -22,6 +22,7 @@ interface ImageModalProps {
 const ImageModal: React.FC<ImageModalProps> = ({ modalData, closeModal, isOpen }) => {
 
   if (!isOpen) return null;
+  Modal.setAppElement('#root')
 
     // const { theme } = useContext(ThemeContext)
 

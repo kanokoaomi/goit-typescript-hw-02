@@ -3,10 +3,9 @@ import styles from './ImageGallery.module.css';
 
 export interface Image {
   id: string;
+  description: string;
   imageSrc: string;
   imageAlt: string;
-  description: string; 
-  imageUrl: string; 
   urls: {
     raw: string;
     full: string;
@@ -20,14 +19,10 @@ export interface ModalData {
   id: string;
   imageSrc: string;
   imageAlt: string;
-  description: string; 
-  imageUrl: string; 
+  description: string;
+  imageUrl: string;
   urls: {
-    raw: string;
-    full: string;
     regular: string;
-    small: string;
-    thumb: string;
   };
 }
 

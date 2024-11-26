@@ -2,7 +2,7 @@ import { Image, ModalData } from "../ImageGallery/ImageGallery";
 import styles from "./ImageCard.module.css"
 
 interface ImageGalleryProps {
-  images: Image[];
+  image: Image;
   openModal: (data: ModalData) => void;
 }
 
